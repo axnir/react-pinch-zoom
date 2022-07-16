@@ -1,7 +1,1 @@
-import React from 'react';
-
-const Index = () => {
-  return 123;
-};
-
-export default Index;
+export { default as ZoomImage } from './ZoomImage';
