@@ -4,29 +4,17 @@ interface PointType {
 }
 
 export interface RecordType {
-  /** 是否按下 */
   isPointerDown: boolean;
-  /** 指针数组 */
   pointers: PointerEvent[];
-  /** 第一个指针点坐标 */
   point1: PointType;
-  /** 第二个指针点坐标 */
   point2: PointType;
-  /** 用于 diff 的计算 */
   lastPointerMove: PointType;
-  /** 上次第一个指针点坐标 */
   lastPoint1: PointType;
-  /** 上次第二个指针点坐标 */
   lastPoint2: PointType;
-  /** 上次中心点的位置 */
   lastCenter: PointType;
-  /** 相对于上一次 pointermove 移动差值 */
   diff: PointType;
-  /** 单击时的位置 */
   singlePoint: PointType;
-  /** 保存宽高尺寸 */
-  size: { width: number; height: number };
-  /** 默认缩放比 */
+  elementSize: { width: number; height: number };
   scale: number;
 }
 
@@ -69,9 +57,13 @@ export const getElementSize = (
   return { width, height };
 };
 
-/** 创建初始信息 */
+/**
+ * 创建一个新的 Record 对象
+ * @param element 元素
+ * @returns RecordType
+ */
 export const createRecord = (element: HTMLElement): RecordType => {
-  const size = getElementSize(element);
+  const elementSize = getElementSize(element);
 
   return {
     isPointerDown: false,
@@ -85,6 +77,6 @@ export const createRecord = (element: HTMLElement): RecordType => {
     diff: { x: 0, y: 0 },
     singlePoint: { x: 0, y: 0 },
     scale: 1,
-    size,
+    elementSize,
   };
 };

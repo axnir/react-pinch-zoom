@@ -22,11 +22,11 @@ class Zoom implements ZoomInterface {
   }
 
   /**
-   * 处理指针移动
+   * 更新指针
    * @param e PointerEvent
    * @param type 'update' | 'delete'
    */
-  handlePointers(e: PointerEvent, type: 'update' | 'delete') {
+  updatePointer(e: PointerEvent, type: 'update' | 'delete') {
     const len = this.record.pointers.length;
 
     for (let i = 0; i < len; i++) {
@@ -43,7 +43,7 @@ class Zoom implements ZoomInterface {
   }
 
   /**
-   * 处理指针按下
+   * 指针按下时的处理
    * @param e PointerEvent
    * @returns void
    */
@@ -100,7 +100,7 @@ class Zoom implements ZoomInterface {
       return;
     }
 
-    this.handlePointers(e, 'update');
+    this.updatePointer(e, 'update');
     const len = this.record.pointers.length;
 
     const current1 = {
@@ -147,8 +147,8 @@ class Zoom implements ZoomInterface {
       const center = getCenter(current1, current2);
       // 计算相对中心的偏移量
       const origin = {
-        x: (ratio - 1) * this.record.size.width * 0.5,
-        y: (ratio - 1) * this.record.size.height * 0.5,
+        x: (ratio - 1) * this.record.elementSize.width * 0.5,
+        y: (ratio - 1) * this.record.elementSize.height * 0.5,
       };
 
       this.record.singlePoint.x -=
@@ -176,7 +176,7 @@ class Zoom implements ZoomInterface {
   }
 
   /**
-   * 处理指针抬起
+   * 指针抬起时的处理
    * @param e PointerEvent
    * @returns void
    */
@@ -185,7 +185,7 @@ class Zoom implements ZoomInterface {
       return;
     }
 
-    this.handlePointers(e, 'delete');
+    this.updatePointer(e, 'delete');
     const len = this.record.pointers.length;
 
     if (len === 0) {
@@ -205,7 +205,7 @@ class Zoom implements ZoomInterface {
   }
 
   /**
-   * 处理指针结束
+   * 指针结束时的处理
    * @returns void
    */
   handlePointerCancel(): void {

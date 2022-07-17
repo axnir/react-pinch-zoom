@@ -7,7 +7,7 @@ type Props = Pick<ZoomInterface, 'maxScale' | 'minScale'> & {
   className?: string;
 };
 
-const Index: FC<Props> = ({
+const ZoomImage: FC<Props> = ({
   src,
   maxScale = 3,
   minScale = 1,
@@ -79,4 +79,4 @@ const Index: FC<Props> = ({
   );
 };
 
-export default Index;
+export default ZoomImage;
