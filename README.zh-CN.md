@@ -13,6 +13,7 @@ pnpm add @lsbcc/react-pinch-zoom
 ## 使用
 
 - `ZoomImage` 组件
+
   支持对图片进行拖动或者缩放。
 
 ```typescript
