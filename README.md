@@ -14,7 +14,7 @@ pnpm add @lsbcc/react-pinch-zoom
 
 - `ZoomImage` Component
 
-  Support dragging and zooming images
+  Support dragging and zooming images.
 
 ```typescript
 import { ZoomImage } from '@lsbcc/react-pinch-zoom';
