@@ -1,6 +1,6 @@
 {
   "name": "@lsbcc/react-pinch-zoom",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple pinch-zoom component for React",
   "files": [
     "dist"
